@@ -8,7 +8,7 @@ package com.qxsun.stu.javabase;
  *(2)关于字符串比较 equals
  *
  */
-public class basePackage {
+public class BasePackage {
     public static void main (String args[]){
         int exampleNum = 2;
         //字符串String初始化

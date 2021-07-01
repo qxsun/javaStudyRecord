@@ -13,7 +13,7 @@ import java.util.TreeSet;
  * (2) 18.9 使用映射
  *
  */
-public class baseCollection {
+public class BaseCollection {
     public static void main(String args[]) {
         int exampleNum = 4;
         //HashSet学习，默认容量是16，默认填充率是0.75，HashSet不能有序存储，如果需要有序，使用TreeSet
