@@ -63,9 +63,9 @@ package  com.qxsun.stu.leetcode.editor.cn;
 public class MedianOfTwoSortedArrays{
     public static void main(String[] args) {
         Solution solution = new MedianOfTwoSortedArrays().new Solution();
-        /*int[] a = new int[]{0,0};
-        int[] b = new int[]{0,0};
-        System.out.println(solution.findMedianSortedArrays(a, b));*/
+        int[] a = new int[]{3};
+        int[] b = new int[]{-2,-1};
+        System.out.println(solution.findMedianSortedArrays(a, b));
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -105,11 +105,58 @@ class Solution1 {
 }
 /*
 O(log(m+n))的时间复杂度，需要分治法
-主要思路：
+主要思路：问题本质是一个寻找第k小的问题，两个正序数组，各自筛选出第k/2个数据，如果第k/2比较小的，包括它以及前面的数据肯定都不是答案。
+二分可以用 循环 也可以用 递归 实现
  */
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        return 0;
+        int length1 = nums1.length, length2 = nums2.length;
+        int sumLength = length1 + length2;
+        //奇数，可以直接找
+        if((sumLength&1) == 1){
+            int kthIndex = sumLength/2 + 1; //查找第kthIndex小的数据
+            return (double) getKthEle(nums1, nums2, kthIndex);
+        } else {
+            int kthIndex1 = sumLength/2, kthIndex2 = sumLength/2+1;
+            return (double) (getKthEle(nums1, nums2, kthIndex1) + getKthEle(nums1, nums2, kthIndex2)) * 0.5;
+        }
+
+    }
+    /*
+    寻找第k小的数值
+     */
+    public int getKthEle(int[] nums1, int[] nums2, int k){
+        int length1 = nums1.length, length2 = nums2.length;
+        int index1 = 0, index2 = 0;//表示数组分别现在移动到的下标
+
+        //开始递归处理
+        while (true) {
+            //边界情况,表示数组1已经搜索完了
+            if(length1 == index1){
+                return nums2[index2+k-1];
+            }
+            if(length2 == index2){
+                return nums1[index1+k-1];
+            }
+            //表示搜到最后一个元素了
+            if(1 == k){
+                return Math.min(nums1[index1], nums2[index2]);
+            }
+            //正常搜索逻辑,各自分配k/2个元素
+            int half =  k/2;
+            //数组一的比较元素下标
+            int newIndex1 = Math.min(index1 + half, length1) - 1;
+            int newIndex2 = Math.min(index2 + half, length2) - 1;
+            int val1 = nums1[newIndex1], val2 = nums2[newIndex2];
+            //当数组1的元素比较小的时候
+            if(val1 <= val2){
+                k -= (newIndex1 - index1 + 1);
+                index1 = newIndex1 + 1;
+            } else {
+                k -= (newIndex2 - index2 + 1);
+                index2 =  newIndex2 + 1;
+            }
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
