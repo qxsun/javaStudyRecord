@@ -8,7 +8,7 @@
  * ================================================================
  * Copyright (c) 银联商务股份有限公司 www.chinaums.com
  */
-package com.example.javaStudy.mqstudy.producer;
+package com.example.qxsun.mqstudy.producer;
 
 
 import org.apache.rocketmq.client.producer.SendCallback;

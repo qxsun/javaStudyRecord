@@ -8,7 +8,7 @@
  * ================================================================
  * Copyright (c) 银联商务股份有限公司 www.chinaums.com
  */
-package com.example.javaStudy.mqstudy.consumer;
+package com.example.qxsun.mqstudy.consumer;
 
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;

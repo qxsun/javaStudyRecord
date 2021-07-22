@@ -1,4 +1,4 @@
-package com.example.javaStudy;
+package com.example.qxsun;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
