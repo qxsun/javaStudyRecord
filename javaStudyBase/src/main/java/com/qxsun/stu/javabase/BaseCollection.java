@@ -1,9 +1,6 @@
 package com.qxsun.stu.javabase;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * qxsun学习工程：java基础之基础集合框架
@@ -64,6 +61,8 @@ public class BaseCollection {
 
         //学习比较器相关知识 18.10
         if (6 == exampleNum) {
+            Map<String, String> curMap =  new HashMap<>();
+
 
         }
 
